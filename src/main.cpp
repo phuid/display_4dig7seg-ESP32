@@ -50,6 +50,8 @@ void displaynumber(uint num) {
     std::cout << "ERROR: cant print numbers bigger than 9999" << std::endl;
     return;
   }
+
+  std::cout << num / 1000 << (num % 1000) / 100 << (num % 100) / 10 << num % 10 << std::endl;
   displaydigit(0, num / 1000);
   displaydigit(1, (num % 1000) / 100);
   displaydigit(2, (num % 100) / 10);
@@ -74,19 +76,7 @@ void mymain()
 
   while (true)
   {
-    for (size_t i = 0; i < sizeof(GROUND_PINS) / sizeof(GROUND_PINS[0]); i++)
-    {
-      for (size_t u = 0; u < sizeof(GROUND_PINS) / sizeof(GROUND_PINS[0]); u++)
-      {
-        gpio_set_level(GROUND_PINS[u], 0);
-      }
-      gpio_set_level(GROUND_PINS[i], 1);
-      for (size_t u = 0; u < sizeof(NUM_SEG_DEF) / sizeof(NUM_SEG_DEF[0]); u++)
-      {
-        // std::cout << "i: " << i << "u: " << u << std::endl;
-        displaydigit(i, u);
-      }
-    }
+    displaynumber(123);
   }
 }
 
